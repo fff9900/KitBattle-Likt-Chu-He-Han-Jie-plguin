@@ -1,4 +1,4 @@
-# KitBattle 插件
+# KitBattle 插件(Readme文件为AI创建)
 
 ![Minecraft版本](https://img.shields.io/badge/Minecraft-1.8.8-brightgreen.svg)
 ![Spigot API](https://img.shields.io/badge/Spigot--API-1.8.8--R0.1-orange.svg)
@@ -7,6 +7,7 @@
 ## 简介
 
 KitBattle 是一个功能丰富的 Minecraft Spigot 服务器插件，为服务器提供职业战斗系统。玩家可以选择不同的职业套装，获得特殊装备和能力，在各种战斗场景中互相对抗。
+但该版本为Kitbattle老版本插件，具体新FFa玩法仍在测试中
 
 ## 特性
 
@@ -22,6 +23,7 @@ KitBattle 是一个功能丰富的 Minecraft Spigot 服务器插件，为服务�
 
 - [Spigot](https://www.spigotmc.org/) 1.8.8-R0.1
 - [Citizens](https://www.spigotmc.org/resources/citizens.13811/) 2.0.33+
+- InstantRespawnV1.0.7.jar
 
 ## 安装
 
@@ -135,6 +137,6 @@ ShopItem shopManager = kitBattle.getShopManager();
 如有问题或建议，请通过以下方式联系：
 
 - GitHub Issues
-- 电子邮件：[您的电子邮件]
+- 电子邮件：[1416727282@qq.com]
 
 感谢使用 KitBattle 插件！ 
