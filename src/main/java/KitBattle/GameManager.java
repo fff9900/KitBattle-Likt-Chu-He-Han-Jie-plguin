@@ -32,23 +32,7 @@ import java.util.stream.Collectors;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 
-/**
- * ==================================================
- *                      GameManager
- * ==================================================
- * 【功能说明】
- * 1. 根据玩家选择的队伍，将玩家传送到该队伍的出生点。
- * 2. 玩家在游戏中死亡时，清空背包并传送到队伍出生点。
- * 3. 玩家击杀其他玩家时，获得1个积分（下届之星），并将受害者背包中所有下届之星转移给击杀者。
- * 4. Gentor生产点功能：管理员使用指令 /battle Gentor <GentorName> <铁|金|钻石> 设置生产点，
- *    游戏开始后，每10秒在生产点掉落对应物品。
- * 5. NPC生成功能：管理员使用指令 /battle NPC <riskName|BuyName> <Name> 设置NPC生成点，
- *    游戏开始后，根据配置生成任务NPC或商人NPC（依赖Citizens插件）。
- * 6. NPC交互：
- *    ──【任务NPC】玩家左键点击提交1个下届之星（积分），每5秒一次（CD限制）。
- *    ──【商人NPC】玩家右键点击打开商店GUI界面（示例）。
- * ==================================================
- */
+
 public class GameManager implements Listener {
 
     // -------------------------------
@@ -655,20 +639,7 @@ public class GameManager implements Listener {
     }
 
 
-    // -------------------------------
-    // 【NPC交互事件监听】
-    // -------------------------------
-    /**
-     * ==================================================
-     * 当玩家与NPC交互时处理：
-     * 1. 如果点击的是任务NPC（名称中含"任务NPC-"），且为左键操作，
-     *    则尝试消耗1个下届之星（每5秒一次提交）。
-     * 2. 如果点击的是商人NPC（名称中含"商人NPC-"），且为右键操作，
-     *    则打开商店GUI界面。
-     * ==================================================
-     */
-    // 删除原有的 @EventHandler 方法
-// 新增 Citizens 的 NPC 左右键点击事件监听
+
     @EventHandler
     public void onNPCLeftClick(NPCLeftClickEvent event) {
         Player player = event.getClicker();
@@ -734,8 +705,7 @@ public class GameManager implements Listener {
         player.openInventory(shopGUI);
     }
 
-    // ======================== 修复2：处理玩家退出服务器事件 ========================
-// 在 GameManager.java 中添加
+
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
@@ -770,7 +740,7 @@ public class GameManager implements Listener {
         return false;
     }
 
-    // 在InventoryClickEvent处理中添加商店逻辑（修改原有事件处理）
+
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
 
@@ -793,7 +763,7 @@ public class GameManager implements Listener {
                 event.setCancelled(true);
                 return;
             }
-            ShopItem.ShopItemData data = getItemData(clicked); // 需要实现根据物品获取ShopItemData的逻辑
+            ShopItem.ShopItemData data = getItemData(clicked); 
 
             if (data != null) {
                 if (shopManager.canAfford(player, data)) {
@@ -833,7 +803,7 @@ public class GameManager implements Listener {
                             shopConfig.getInt("kits." + key + ".price_diamond"),
                             shopConfig.getInt("kits." + key + ".x"),
                             shopConfig.getInt("kits." + key + ".y"),
-                            new ArrayList<>(), // 实际需加载物品数据
+                            new ArrayList<>(), // 加载物品数据
                             null
                     );
                 }
@@ -957,7 +927,7 @@ public class GameManager implements Listener {
             }
         }
 
-        // 新增：清除所有玩家的游戏状态
+        // 清除所有玩家的游戏状态
         for (Player player : gamePlayers) {
             plugin.getBattleManager().getGameManager().getInGamePlayers().remove(player);
             player.getInventory().clear();
@@ -995,9 +965,7 @@ public class GameManager implements Listener {
         return npcName.contains("任务NPC-") || npcName.contains("商人NPC-");
     }
 
-    // ------------------------------
-// 新增：从 Spawn.yml 中获取大厅（lobby）位置的方法
-// ------------------------------
+
     private Location getLobbyLocation() {
         File spawnFile = new File(plugin.getDataFolder(), "Spawn.yml");
         // 通过插件实例获取 spawnConfig
