@@ -50,25 +50,22 @@ public class WaitGame {
     public Set<Player> getInGamePlayers() {
         return Collections.unmodifiableSet(inGamePlayers); // 返回不可修改集合增加安全性
     }
-    // ========== 新增玩家数量获取方法 ==========
-    // 判断玩家是否在等待队列中
-    // ======================== 在 WaitGame.java 中添加玩家状态检查 ========================
+   
     public boolean containsPlayer(Player player) {
         return waitingPlayers.contains(player) ||
                 unselectedPlayers.contains(player) ||
                 selectedPlayers.contains(player);
     }
 
-    // ==== 新增方法：获取当前等待玩家数量 ====
+
     public int getPlayerCount() {
         return this.waitingPlayers.size();
     }
-    // 在 WaitGame.java 中添加以下方法：
+
     public Set<Player> getWaitingPlayers() {
         return this.waitingPlayers;
     }
 
-    // 在 WaitGame.java 中添加方法
     public void cancelCountdown() {
         Bukkit.getScheduler().cancelTasks(plugin);
         gameStarting = false;
@@ -84,7 +81,7 @@ public class WaitGame {
     // 玩家加入游戏
     public void joinGame(Player player) {
 
-        // 新增全局状态检查
+        // 全局状态检查
         BattleManager battleManager = ((KitBattle) plugin).getBattleManager();
         // 检查是否已在其他游戏模式中
         for (WaitGame wg : battleManager.getActiveGames().values()) {
@@ -106,7 +103,7 @@ public class WaitGame {
             return;
         }
 
-        // 新增传送逻辑
+        // 传送逻辑
         File modeFile = new File(plugin.getDataFolder() + "/Game", modeName + ".yml");
         FileConfiguration modeConfig = YamlConfiguration.loadConfiguration(modeFile);
 
@@ -121,7 +118,7 @@ public class WaitGame {
 
         // 给玩家一个床来选择队伍
         giveTeamSelectionItem(player);
-        unselectedPlayers.add(player); // 新增：加入未选队伍集合
+        unselectedPlayers.add(player); // 加入未选队伍集合
 
         // 先添加床
         giveTeamSelectionItem(player);
@@ -140,9 +137,7 @@ public class WaitGame {
 
         player.sendMessage(ChatColor.GREEN + "你已经加入了游戏模式: " + modeName);
     }
-    // 添加离开处理方法
-    // 修改 leaveGame 方法
-    // 修改 leaveGame 方法
+    
     public void leaveGame(Player player) {
         if (waitingPlayers.remove(player)) {
             currentPlayers--;
