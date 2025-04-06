@@ -28,44 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-/**
- * ==================================================
- *  KitBattle 主插件类
- *  依赖: Citizens-2.0.33-b3360
- * ==================================================
- *
- * 插件功能:
- * 1. 传送点管理(Spawn.yml)
- *    /kit set spawn <battleName>  设置传送点
- *    /kit tp <battleName>         传送到对应传送点
- *    /kit setlobby                设置游戏大厅(lobby)位置
- *    /kit rtp                     随机传送到某个已设置的传送点
- *    /kit spawn list             查看所有已设置的传送点
- *
- * 2. 玩家变量(保存在playerdata.yml中):
- *    - coins (金币)
- *    - experience (经验值)
- *    - level (等级)
- *    /kit add <玩家名> <金币|经验值|等级> <数量> 增加指定玩家变量数值
- *    - 击杀、死亡都可获得金币、经验值(在config.yml中设置数值)
- *    - 若经验值达到升级条件(在config.yml的 levels.xx.experienceRequired)，
- *      则自动提升等级并重置经验值
- *
- * 3. 玩家复活后传送回lobby(Spawn.yml 中的lobby)
- * 4. 玩家死亡事件: 给予击杀者与死亡玩家相应奖励
- * 5. 首次进入服务器时初始化玩家数据
- *
- * 6. 职业管理(kit.yml):
- *    /kit create <name> 创建一个装备套装
- *    /kit edit <name>   标记一个装备套装的内容(进入编辑模式)
- *    /kit save <name>   保存当前背包物品(退出编辑模式)
- *    /kit gui           打开职业选择GUI
- *    /kit list          查看当前所有套装名称
- *
- * 7. : 当玩家在GUI中选择职业后:
- *    - 立即关闭GUI
- *    - 直到玩家死亡之前，无法再次选择职业
- */
+
 public class KitBattle extends JavaPlugin implements Listener {
 
     // -------------------------------------
@@ -1134,9 +1097,6 @@ public class KitBattle extends JavaPlugin implements Listener {
                         meta.getDisplayName().equals(ChatColor.AQUA + "选择队伍")) {
                     event.setCancelled(true);  // 取消默认操作
 
-                    // ================================================
-                    // 修复BUG：根据玩家获取实际的 WaitGame 实例并打开队伍选择GUI
-                    // ================================================
                     WaitGame waitGame = battleManager.getWaitGameByPlayer(player);
                     if (waitGame != null) {
                         waitGame.openTeamSelectionGUI(player);
