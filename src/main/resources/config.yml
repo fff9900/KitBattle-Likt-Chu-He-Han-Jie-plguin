@@ -1,0 +1,16 @@
+levels:
+  '1':
+    experienceRequired: 100
+  '2':
+    experienceRequired: 200
+  '3':
+    experienceRequired: 300
+initial-coins: 100
+initial-experience: 0
+initial-level: 1
+kill-coins: 10
+kill-exp: 10
+death-coins: 5
+death-exp: 5
+
+loot-system: true  # 是否开启击杀掠夺机制

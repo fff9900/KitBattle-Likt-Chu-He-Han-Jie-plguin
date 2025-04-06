@@ -1,0 +1,8 @@
+presets:
+  '1':
+    name: 铁匠
+    price_iron: 10
+    price_gold: 5
+    price_diamond: 3
+    slot: 1
+    enabled: true

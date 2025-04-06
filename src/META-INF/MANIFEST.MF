@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: ebean-2.8.1.jar spigot-api-1.8.8-R0.1-20160221.082514-43.jar
+  bukkit-1.8.8-R0.1-20160221.082532-43.jar spigot-1.8.8-R0.1-SNAPSHOT-la
+ test.jar
+
+/*

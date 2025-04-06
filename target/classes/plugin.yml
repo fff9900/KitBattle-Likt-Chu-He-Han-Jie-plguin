@@ -1,0 +1,34 @@
+name: KitBattle
+version: 1.0
+main: KitBattle.KitBattle
+api-version: 1.8
+
+commands:
+  kit:
+    description: "KitBattle 插件指令"
+    usage: "出现这个多半是插件问题"
+    aliases: [kb]
+  battle:
+    description: "Battle模式管理指令"
+    usage: "出现这个多半是插件问题"
+    aliases: [ bt ]
+
+permissions:
+  kitbattle.use:
+    description: "使用KitBattle插件"
+    default: true
+  kitbattle.create:
+    description: "创建装备套装"
+    default: false
+  kitbattle.edit:
+    description: "编辑装备套装"
+    default: false
+  kitbattle.save:
+    description: "保存装备套装"
+    default: false
+  kitbattle.gui:
+    description: "打开装备套装GUI"
+    default: false
+  battle.admin:
+    description: "管理Battle模式"
+    default: op
