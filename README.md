@@ -125,6 +125,9 @@ ShopItem shopManager = kitBattle.getShopManager();
 
 ## 贡献
 
+除此之外额外提供了world.rar世界文件，这是个复刻的楚河汉界地图
+在这提供下载使用
+
 欢迎提交问题报告和功能请求！如果您想为项目做出贡献，请：
 
 1. Fork 本仓库
